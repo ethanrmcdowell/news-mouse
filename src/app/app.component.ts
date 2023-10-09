@@ -26,6 +26,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
   feedbackMsg: string = '';
   toggleBtn: string = 'login';
   loggedInUser: string = '';
+  favoriteArticles: any;
 
   ngOnInit() {
     // this.getData('en');
@@ -36,6 +37,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
   loginUser() {
     this.authService.loginUser(this.userEmail, this.userPass, (response) => {
       if (response.success) {
+        this.getFavorites();
         console.log("SUCCESS:", response);
         this.handleFeedbackMsg('success');
       } else {
@@ -55,6 +57,23 @@ constructor(private authService: AuthService, private dataService: DataService) 
         this.handleFeedbackMsg('failure');
       }
     })
+  }
+
+  getFavorites() {
+    this.dataService.getFavorites(this.loggedInUser).then((articles) => {
+      this.favoriteArticles = articles;
+      console.log("FAVORITE ARTICLES", this.favoriteArticles);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
+  getDate() {
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
   }
 
   logoutUser() {
@@ -82,6 +101,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
         content: article.content,
         link: article.link,
         pubDate: article.pubDate,
+        timestamp: this.getDate(),
       }
 
       console.log("ARTICLE DATA TO BE FAVORITED ->", articleData);

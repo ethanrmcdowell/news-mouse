@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
-import { Firestore, collection, addDoc, collectionData, query, getDocs, DocumentData, deleteDoc, doc, setDoc, orderBy }  from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, where, getDocs, DocumentData, deleteDoc, doc, setDoc, orderBy }  from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +38,7 @@ export class DataService {
 
   async getFavorites(email: string) {
     let favoriteArray: DocumentData[] = [];
-    const q = query(collection(this.firestore, 'userFavorites'), orderBy('timestamp'));
+    const q = query(collection(this.firestore, 'userFavorites'), where('user', '==', email));
     const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
