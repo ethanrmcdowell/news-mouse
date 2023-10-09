@@ -1,8 +1,30 @@
+<mat-toolbar>
+  <span class="titleDiv">
+    <mat-icon class="globeIcon" fontIcon="language"></mat-icon>
+    <h3 class="headerText">
+      powered by
+      <a href="https://newsdata.io/" class="loginIcon" target="_blank"
+        >newsdata.io</a
+      >
+    </h3>
+  </span>
+  <span class="toolbar-spacer"></span>
+  <mat-icon
+    fontIcon="person_outline"
+    class="loginIcon"
+    (click)="loginClick()"
+  ></mat-icon>
+  <span class="toolbar-spacer-two"></span>
+  <span (click)="getData('en')" class="langChange">en</span>
+  <span (click)="getData('fr')" class="langChange">fr</span>
+  <span (click)="getData('es')" class="langChange">sp</span>
+</mat-toolbar>
+
 <div class="logoContainer">
   <img class="logoImg" src="../assets/newsmouse.png" />
 </div>
 
-<div>
+<div *ngIf="loginToggle">
   <mat-card>
     <mat-card-header>
       <h3>Login</h3>
@@ -24,7 +46,44 @@
           [ngModelOptions]="{ standalone: true }"
         />
       </mat-form-field>
-      <button mat-button (click)="loginUser()">Login</button>
+      <button mat-button (click)="loginUser()" class="loginBtn">Login</button>
+      <button mat-button (click)="loginClick()" class="loginBtn">Cancel</button>
     </mat-card-content>
+    <mat-card-footer>
+      <h3 class="feedback">{{ feedbackMsg }}</h3>
+    </mat-card-footer>
   </mat-card>
+</div>
+
+<div *ngIf="!loginToggle" class="topStories">
+  <div *ngFor="let article of topStories" class="articleContainer">
+    <h3 class="articleTitle">
+      <a href="{{ article.link }}" target="_blank">
+        {{ article.title }}
+      </a>
+    </h3>
+    <mat-icon
+      fontIcon="star_border"
+      class="starIcon loginIcon"
+      (click)="addFavorite()"
+    ></mat-icon>
+    <div class="splitContainer">
+      <div *ngIf="article.image_url" class="articleSplit articleImage">
+        <a href="{{ article.link }}" target="_blank">
+          <img class="articleImg" src="{{ article.image_url }}" />
+        </a>
+      </div>
+      <div
+        [ngClass]="{ articleSplit: article.image_url }"
+        class="articleSplit articleSnippet"
+      >
+        <a href="{{ article.link }}" target="_blank">
+          <p>
+            {{ article.content | slice : 0 : 900 }}
+            <span *ngIf="article.content.length > 900">...</span>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
