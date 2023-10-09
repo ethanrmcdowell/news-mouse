@@ -9,7 +9,7 @@
     </h3>
   </span>
   <span class="toolbar-spacer"></span>
-  <h3 *ngIf="userAuthenticated">{{ loggedInUser }}</h3>
+  <h5 class="userEmail">{{ loggedInUser }}</h5>
   <mat-icon
     *ngIf="userAuthenticated"
     fontIcon="star"
@@ -38,6 +38,7 @@
   <img class="logoImg" src="../assets/newsmouse.png" />
 </div>
 
+<!-- LOGIN / REGISTER FORM -->
 <div *ngIf="loginToggle">
   <mat-card>
     <mat-card-header>
@@ -98,7 +99,8 @@
   </mat-card>
 </div>
 
-<div *ngIf="!loginToggle" class="topStories">
+<!-- TOP STORIES SECTION -->
+<div *ngIf="!loginToggle && !favoritesToggle" class="topStories">
   <div *ngFor="let article of topStories" class="articleContainer">
     <h3 class="articleTitle">
       <a href="{{ article.link }}" target="_blank">
@@ -120,6 +122,32 @@
         [ngClass]="{ articleSplit: article.image_url }"
         class="articleSplit articleSnippet"
       >
+        <a href="{{ article.link }}" target="_blank">
+          <p>
+            {{ article.content | slice : 0 : 900 }}
+            <span *ngIf="article.content.length > 900">...</span>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAVORITE NEWS ARTICLES DISPLAY -->
+<div *ngIf="!loginToggle && favoritesToggle" class="topStories">
+  <div *ngFor="let article of favoriteArticles" class="articleContainer">
+    <h3 class="articleTitle">
+      <a href="{{ article.link }}" target="_blank">
+        {{ article.title }}
+      </a>
+    </h3>
+    <mat-icon
+      fontIcon="star"
+      class="starIcon loginIcon"
+      (click)="addFavorite(article)"
+    ></mat-icon>
+    <div>
+      <div class="articleSnippet">
         <a href="{{ article.link }}" target="_blank">
           <p>
             {{ article.content | slice : 0 : 900 }}

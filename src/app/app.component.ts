@@ -21,6 +21,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
   userPass2: string = '';
   userAuthenticated: boolean = false;
   loginToggle: boolean = false;
+  favoritesToggle: boolean = false;
   newsData: any;
   topStories: any;
   feedbackMsg: string = '';
@@ -69,7 +70,8 @@ constructor(private authService: AuthService, private dataService: DataService) 
   }
   
   showFavorites() {
-    this.getFavorites();
+    this.favoritesToggle = !this.favoritesToggle;
+    if (this.favoritesToggle) this.getFavorites();
   }
 
   getDate() {
