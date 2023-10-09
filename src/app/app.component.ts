@@ -35,9 +35,8 @@ constructor(private authService: AuthService, private dataService: DataService) 
   }
 
   loginUser() {
-    this.authService.loginUser(this.userEmail, this.userPass, (response) => {
+    this.authService.loginUser(this.userEmail, this.userPass, async (response) => {
       if (response.success) {
-        this.getFavorites();
         console.log("SUCCESS:", response);
         this.handleFeedbackMsg('success');
       } else {
@@ -59,13 +58,18 @@ constructor(private authService: AuthService, private dataService: DataService) 
     })
   }
 
-  getFavorites() {
-    this.dataService.getFavorites(this.loggedInUser).then((articles) => {
+  async getFavorites() {
+    console.log("LOGGED IN USER ->", this.loggedInUser);
+    await this.dataService.getFavorites(this.loggedInUser).then((articles) => {
       this.favoriteArticles = articles;
       console.log("FAVORITE ARTICLES", this.favoriteArticles);
     }).catch((error) => {
       console.error(error);
     });
+  }
+  
+  showFavorites() {
+    this.getFavorites();
   }
 
   getDate() {
