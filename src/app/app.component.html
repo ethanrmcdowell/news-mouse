@@ -16,6 +16,15 @@
           [ngModelOptions]="{ standalone: true }"
         />
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          [(ngModel)]="userPass"
+          matInput
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <button mat-button (click)="loginUser()">Login</button>
     </mat-card-content>
   </mat-card>
 </div>
