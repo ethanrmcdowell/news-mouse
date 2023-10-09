@@ -107,3 +107,8 @@ mat-icon {
 .feedback {
     height: 25px;
 }
+
+mat-card-header {
+    justify-content: center;
+    margin-bottom: 10px;
+}

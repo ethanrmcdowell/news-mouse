@@ -18,11 +18,13 @@ constructor(private authService: AuthService, private dataService: DataService) 
   title = 'news-mouse';
   userEmail: string = '';
   userPass: string = '';
+  userPass2: string = '';
   userAuthenticated: boolean = false;
   loginToggle: boolean = false;
   newsData: any;
   topStories: any;
   feedbackMsg: string = '';
+  toggleBtn: string = 'login';
 
   ngOnInit() {
     // this.getData('en');
@@ -40,6 +42,10 @@ constructor(private authService: AuthService, private dataService: DataService) 
         this.handleFeedbackMsg('failure');
       }
     })
+  }
+
+  loginRegisterToggle(e: any) {
+    console.log("TOGGLE: " + e.value);
   }
 
   testFuction() {

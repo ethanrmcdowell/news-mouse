@@ -27,13 +27,20 @@
 <div *ngIf="loginToggle">
   <mat-card>
     <mat-card-header>
-      <h3>Login</h3>
+      <mat-button-toggle-group
+        (change)="loginRegisterToggle($event)"
+        [(ngModel)]="toggleBtn"
+      >
+        <mat-button-toggle value="login">Login</mat-button-toggle>
+        <mat-button-toggle value="register">Register</mat-button-toggle>
+      </mat-button-toggle-group>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
         <mat-label>E-mail</mat-label>
         <input
           [(ngModel)]="userEmail"
+          type="email"
           matInput
           [ngModelOptions]="{ standalone: true }"
         />
@@ -42,11 +49,36 @@
         <mat-label>Password</mat-label>
         <input
           [(ngModel)]="userPass"
+          type="password"
           matInput
           [ngModelOptions]="{ standalone: true }"
         />
       </mat-form-field>
-      <button mat-button (click)="loginUser()" class="loginBtn">Login</button>
+      <mat-form-field *ngIf="toggleBtn === 'register'">
+        <mat-label>Reenter Password</mat-label>
+        <input
+          [(ngModel)]="userPass2"
+          type="password"
+          matInput
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <button
+        mat-button
+        (click)="loginUser()"
+        class="loginBtn"
+        *ngIf="toggleBtn === 'login'"
+      >
+        Login
+      </button>
+      <button
+        mat-button
+        (click)="loginUser()"
+        class="loginBtn"
+        *ngIf="toggleBtn === 'register'"
+      >
+        Register
+      </button>
       <button mat-button (click)="loginClick()" class="loginBtn">Cancel</button>
     </mat-card-content>
     <mat-card-footer>

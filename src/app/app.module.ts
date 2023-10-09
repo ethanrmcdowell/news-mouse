@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import * as firebase from 'firebase/app';
 
 firebase.initializeApp(environment.firebase);
@@ -38,6 +40,7 @@ firebase.initializeApp(environment.firebase);
     MatDialogModule,
     MatToolbarModule,
     HttpClientModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
