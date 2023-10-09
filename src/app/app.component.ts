@@ -25,6 +25,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
   topStories: any;
   feedbackMsg: string = '';
   toggleBtn: string = 'login';
+  loggedInUser: string = '';
 
   ngOnInit() {
     // this.getData('en');
@@ -44,8 +45,22 @@ constructor(private authService: AuthService, private dataService: DataService) 
     })
   }
 
-  loginRegisterToggle(e: any) {
-    console.log("TOGGLE: " + e.value);
+  registerUser() {
+    this.authService.registerUser(this.userEmail, this.userPass, (response) => {
+      if (response.success) {
+        console.log("SUCCESS:", response);
+        this.handleFeedbackMsg('success');
+      } else {
+        console.log("FAILURE:", response);
+        this.handleFeedbackMsg('failure');
+      }
+    })
+  }
+
+  logoutUser() {
+    this.authService.logOutUser((response) => {
+      console.log(response);
+    })
   }
 
   testFuction() {
@@ -56,18 +71,33 @@ constructor(private authService: AuthService, private dataService: DataService) 
     this.loginToggle = !this.loginToggle;
   }
 
-  addFavorite() {
-    console.log("is user authenticated? " + this.userAuthenticated);
+  addFavorite(article: any) {
     if (!this.userAuthenticated) {
       this.loginClick();
     } else {
-      console.log("routing to favorites...");
+      let articleData = {
+        id: article.article_id,
+        user: this.loggedInUser,
+        title: article.title,
+        content: article.content,
+        link: article.link,
+        pubDate: article.pubDate,
+      }
+
+      console.log("ARTICLE DATA TO BE FAVORITED ->", articleData);
+
+      this.dataService.saveFavorite(articleData).then(async res => {
+        console.log(res);
+      }).catch((error) => {
+        console.error(error);
+      })
     }
   }
 
   handleFeedbackMsg(res: string) {
     if (res === 'success') {
       this.feedbackMsg = "Successfully logged in!";
+      this.loggedInUser = this.userEmail;
       setTimeout(() => {
         this.loginClick();
       }, 3000);
