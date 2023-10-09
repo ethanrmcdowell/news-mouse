@@ -28,6 +28,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
   toggleBtn: string = 'login';
   loggedInUser: string = '';
   favoriteArticles: any;
+  searchBar: string = '';
 
   ngOnInit() {
     // this.getData('en');

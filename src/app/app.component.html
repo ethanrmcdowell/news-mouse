@@ -9,6 +9,17 @@
     </h3>
   </span>
   <span class="toolbar-spacer"></span>
+  <mat-form-field class="searchBar">
+    <input
+      [(ngModel)]="searchBar"
+      type="text"
+      matInput
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </mat-form-field>
+  <button mat-button>Search</button>
+
+  <span class="toolbar-spacer"></span>
   <h5 class="userEmail">{{ loggedInUser }}</h5>
   <mat-icon
     *ngIf="userAuthenticated"
@@ -125,7 +136,6 @@
         <a href="{{ article.link }}" target="_blank">
           <p>
             {{ article.content | slice : 0 : 900 }}
-            <span *ngIf="article.content.length > 900">...</span>
           </p>
         </a>
       </div>

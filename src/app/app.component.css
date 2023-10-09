@@ -35,6 +35,11 @@ a {
     width: 50%;
 }
 
+.articleSnippet {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 .splitContainer {
     display: flex;
     justify-content: space-between;
@@ -121,4 +126,10 @@ mat-card-header {
     font-size: 16px;
     margin-right: 20px;
     margin-top: 2px;
+}
+
+.searchBar {
+    margin-top: 10px;
+    margin-left: 50px;
+    width: 15%;
 }
