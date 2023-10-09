@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "news-mouse": {
+      "hosting": {
+        "news-mouse": [
+          "news-mouse"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "news-mouse"
+  }
+}
