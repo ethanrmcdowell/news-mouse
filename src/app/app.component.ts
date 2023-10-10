@@ -29,6 +29,8 @@ constructor(private authService: AuthService, private dataService: DataService) 
   loggedInUser: string = '';
   favoriteArticles: any;
   searchBar: string = '';
+  showFeedback: boolean = false;
+  feedbackText: string = '';
 
   ngOnInit() {
     // this.getData('en');
@@ -115,8 +117,21 @@ constructor(private authService: AuthService, private dataService: DataService) 
 
       this.dataService.saveFavorite(articleData).then(async res => {
         console.log(res);
+        this.feedbackMsg = "Added to favorites!";
+        this.showFeedback = true;
+
+        setTimeout(() => {
+          this.showFeedback = false;
+          this.feedbackMsg = '';
+        }, 3000);
       }).catch((error) => {
-        console.error(error);
+        this.feedbackMsg = "Error adding to favorites!";
+        this.showFeedback = true;
+
+        setTimeout(() => {
+          this.showFeedback = false;
+          this.feedbackMsg = '';
+        }, 3000);
       })
     }
   }

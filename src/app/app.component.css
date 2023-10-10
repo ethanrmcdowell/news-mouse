@@ -133,3 +133,19 @@ mat-card-header {
     margin-left: 50px;
     width: 15%;
 }
+
+.menuContainer {
+    width: 100%;
+}
+
+.favoriteFeedback {
+    position: fixed;
+    width: 150px;
+    bottom: 0px;
+    right: 0px;
+    background-color: #176B87;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+}

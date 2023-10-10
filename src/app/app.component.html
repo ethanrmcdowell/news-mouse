@@ -151,11 +151,7 @@
         {{ article.title }}
       </a>
     </h3>
-    <mat-icon
-      fontIcon="star"
-      class="starIcon loginIcon"
-      (click)="addFavorite(article)"
-    ></mat-icon>
+    <mat-icon fontIcon="star" class="starIcon loginIcon"></mat-icon>
     <div>
       <div class="articleSnippet">
         <a href="{{ article.link }}" target="_blank">
@@ -167,4 +163,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="showFeedback" class="favoriteFeedback">
+  <h3>{{ feedbackMsg }}</h3>
 </div>
