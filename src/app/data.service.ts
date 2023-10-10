@@ -49,4 +49,13 @@ export class DataService {
     });
     return favoriteArray;
   }
+
+  async removeFavorite(id: string) {
+    const docInstance = doc(this.firestore, 'userFavorites', id);
+    deleteDoc(docInstance).then(() => {
+      console.log("Successfully removed favorite!");
+    }).catch((error) => {
+      console.error(error);
+    })
+  }
 }

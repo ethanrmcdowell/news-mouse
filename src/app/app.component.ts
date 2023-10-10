@@ -104,7 +104,6 @@ constructor(private authService: AuthService, private dataService: DataService) 
       this.loginClick();
     } else {
       let articleData = {
-        id: article.article_id,
         user: this.loggedInUser,
         title: article.title,
         content: article.content,
@@ -134,6 +133,30 @@ constructor(private authService: AuthService, private dataService: DataService) 
         }, 3000);
       })
     }
+  }
+  
+  async removeFavorite(article: any) {
+    console.log("removing favorite ->", article);
+    this.dataService.removeFavorite(article.id).then((res) => {
+      try {
+        this.feedbackMsg = "Removed from favorites!";
+        this.showFeedback = true;
+        setTimeout(() => {
+          this.showFeedback = false;
+          this.feedbackMsg = '';
+        }, 3000);
+      } finally {
+        this.getFavorites();
+      }
+    }).catch((error) => {
+      this.feedbackMsg = "Error!";
+      this.showFeedback = true;
+
+      setTimeout(() => {
+        this.showFeedback = false;
+        this.feedbackMsg = '';
+      }, 3000);
+    })
   }
 
   handleFeedbackMsg(res: string) {
