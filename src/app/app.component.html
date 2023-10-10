@@ -1,6 +1,8 @@
 <mat-toolbar>
   <span class="titleDiv">
-    <mat-icon class="globeIcon" fontIcon="language"></mat-icon>
+    <a href=".">
+      <mat-icon class="globeIcon" fontIcon="language"></mat-icon>
+    </a>
     <h3 class="headerText">
       powered by
       <a href="https://newsdata.io/" class="loginIcon" target="_blank"
@@ -124,7 +126,7 @@
       (click)="addFavorite(article)"
     ></mat-icon>
     <div class="splitContainer">
-      <div *ngIf="article.image_url" class="articleSplit articleImage">
+      <div *ngIf="article.image_url" class="articleSplit">
         <a href="{{ article.link }}" target="_blank">
           <img class="articleImg" src="{{ article.image_url }}" />
         </a>

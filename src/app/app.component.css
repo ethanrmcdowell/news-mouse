@@ -47,6 +47,7 @@ a {
 
 .articleTitle {
     text-align: center;
+    font-weight: bold;
 }
 
 .articleImg {
@@ -79,6 +80,11 @@ mat-icon {
 }
 
 .loginIcon:hover {
+    color: #CD5C08;
+    cursor: pointer;
+}
+
+.globeIcon:hover {
     color: #CD5C08;
     cursor: pointer;
 }
@@ -148,4 +154,35 @@ mat-card-header {
     padding-left: 25px;
     padding-right: 25px;
     padding-top: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .articleSplit {
+        display: flex;
+        width: 100%;
+    }
+
+    mat-card {
+        width: 90%;
+    }
+
+    .articleContainer {
+        width: 90%;
+    }
+
+    .articleTitle {
+        width: 80%;
+    }
+
+    .splitContainer {
+        display: block;
+    }
+
+    .logoImg {
+        width: 100%;
+    }
+
+    .titleDiv {
+        display: none;
+    }
 }
