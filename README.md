@@ -9,4 +9,10 @@ Welcome to News Mouse! This application utilizes the NewsData.io API to collect 
 *NewsData.io API
 *MaterialUI
 
+## Contact
 
+:link: https://github.com/ethanrmcdowell
+
+:phone: (313) 400-5611
+
+:e-mail: ethan.r.mcdowell@gmail.com
