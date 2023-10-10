@@ -4,10 +4,10 @@ Welcome to News Mouse! This application utilizes the NewsData.io API to collect 
 
 ## Technologies
 
-*Angular / AngularCLI
-*Firebase / Firestore
-*NewsData.io API
-*MaterialUI
+* Angular / AngularCLI
+* Firebase / Firestore
+* NewsData.io API
+* MaterialUI
 
 ## Contact
 
