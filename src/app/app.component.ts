@@ -183,4 +183,14 @@ constructor(private authService: AuthService, private dataService: DataService) 
       console.error("Error:", error);
     }
   }
+
+  async searchNews() {
+    try {
+      this.newsData = await this.dataService.searchNews(this.searchBar);
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      this.topStories = this.newsData.data.results;
+    }
+  }
 }

@@ -26,6 +26,20 @@ export class DataService {
       });
   }
 
+  searchNews(query: string) {
+    let url = "https://newsdata.io/api/1/news?apikey=pub_26343bd51473001e6f4a9f2a8a16d68b91285&country=us&q='";
+    url += query + "'";
+
+    console.log("URL", url);
+
+    return axios.get(url)
+      .then(response => response)
+      .catch(error => {
+        console.error('Error:', error);
+        throw error;
+      });
+  }
+
   async saveFavorite(data: any) {
     const collectionInstance = collection(this.firestore, 'userFavorites');
     addDoc(collectionInstance, data).then(() => {
