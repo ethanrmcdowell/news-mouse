@@ -185,4 +185,8 @@ mat-card-header {
     .titleDiv {
         display: none;
     }
+
+    .userEmail {
+        display: none;
+    }
 }
