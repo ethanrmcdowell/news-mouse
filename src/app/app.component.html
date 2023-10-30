@@ -114,35 +114,10 @@
 
 <!-- TOP STORIES SECTION -->
 <div *ngIf="!loginToggle && !favoritesToggle" class="topStories">
-  <div *ngFor="let article of topStories" class="articleContainer">
-    <h3 class="articleTitle">
-      <a href="{{ article.link }}" target="_blank">
-        {{ article.title }}
-      </a>
-    </h3>
-    <mat-icon
-      fontIcon="star_border"
-      class="starIcon loginIcon"
-      (click)="addFavorite(article)"
-    ></mat-icon>
-    <div class="splitContainer">
-      <div *ngIf="article.image_url" class="articleSplit">
-        <a href="{{ article.link }}" target="_blank">
-          <img class="articleImg" src="{{ article.image_url }}" />
-        </a>
-      </div>
-      <div
-        [ngClass]="{ articleSplit: article.image_url }"
-        class="articleSplit articleSnippet"
-      >
-        <a href="{{ article.link }}" target="_blank">
-          <p>
-            {{ article.content | slice : 0 : 900 }}
-          </p>
-        </a>
-      </div>
-    </div>
-  </div>
+  <app-articles
+    [articles]="topStories"
+    (addFavorite)="addFavorite($event)"
+  ></app-articles>
 </div>
 
 <!-- FAVORITE NEWS ARTICLES DISPLAY -->
