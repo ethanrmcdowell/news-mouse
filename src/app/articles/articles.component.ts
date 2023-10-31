@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-articles',
@@ -8,10 +8,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ArticlesComponent {
   @Input() articles: any;
   @Output() addFavorite = new EventEmitter<any>();
-
-  ngOnInit() {
-    console.log("ARTICLES COMPONENT:", this.articles);
-  }
 
   handleFavorite(article: any) {
     this.addFavorite.emit(article);

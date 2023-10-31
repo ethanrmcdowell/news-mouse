@@ -16,16 +16,6 @@ mat-card-content {
     margin: 25px auto;
 }
 
-.articleContainer {
-    position: relative;
-    width: 60%;
-    margin: auto;
-    border-radius: 1px;
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);      
-    padding: 5px;
-    margin-bottom: 20px;
-}
-
 a {
     text-decoration: none;
     color: black;

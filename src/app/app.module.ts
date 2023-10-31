@@ -22,13 +22,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import * as firebase from 'firebase/app';
 import { ArticlesComponent } from './articles/articles.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

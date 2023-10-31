@@ -1,0 +1,22 @@
+<div *ngFor="let article of articles" class="articleContainer">
+  <h3 class="articleTitle">
+    <a href="{{ article.link }}" target="_blank">
+      {{ article.title }}
+    </a>
+  </h3>
+  <mat-icon
+    fontIcon="star"
+    class="starIcon loginIcon"
+    (click)="handleRemoveFav(article)"
+  ></mat-icon>
+  <div>
+    <div class="articleSnippet">
+      <a href="{{ article.link }}" target="_blank">
+        <p>
+          {{ article.content | slice : 0 : 900 }}
+          <span *ngIf="article.content.length > 900">...</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
