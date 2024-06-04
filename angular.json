@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "news-mouse:build:production"
+              "buildTarget": "news-mouse:build:production"
             },
             "development": {
-              "browserTarget": "news-mouse:build:development"
+              "buildTarget": "news-mouse:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "news-mouse:build"
+            "buildTarget": "news-mouse:build"
           }
         },
         "test": {
