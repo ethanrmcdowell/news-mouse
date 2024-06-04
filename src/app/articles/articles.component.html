@@ -1,6 +1,6 @@
 <div *ngFor="let article of articles" class="articleContainer">
   <h3 class="articleTitle">
-    <a href="{{ article.link }}" target="_blank">
+    <a href="{{ article.url }}" target="_blank">
       {{ article.title }}
     </a>
   </h3>
@@ -10,18 +10,18 @@
     (click)="handleFavorite(article)"
   ></mat-icon>
   <div class="splitContainer">
-    <div *ngIf="article.image_url" class="articleSplit">
-      <a href="{{ article.link }}" target="_blank">
-        <img class="articleImg" src="{{ article.image_url }}" />
+    <div *ngIf="article.image" class="articleSplit">
+      <a href="{{ article.url }}" target="_blank">
+        <img class="articleImg" src="{{ article.image }}" />
       </a>
     </div>
     <div
-      [ngClass]="{ articleSplit: article.image_url }"
+      [ngClass]="{ articleSplit: article.image }"
       class="articleSplit articleSnippet"
     >
-      <a href="{{ article.link }}" target="_blank">
+      <a href="{{ article.url }}" target="_blank">
         <p>
-          {{ article.content | slice : 0 : 900 }}
+          {{ article.description | slice : 0 : 900 }}
         </p>
       </a>
     </div>

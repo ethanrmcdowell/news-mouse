@@ -13,7 +13,7 @@ export class DataService {
   constructor(private http: HttpClient, private firestore: Firestore) { }
 
   getNews(language: string) {
-    let url = "https://newsdata.io/api/1/news?apikey=pub_26343bd51473001e6f4a9f2a8a16d68b91285&country=us&language=";
+    let url = "https://gnews.io/api/v4/top-headlines?category=general&apikey=e1f9e739bc96f6ffcbf7644e81416d39&lang=";
     url += language;
 
     console.log("URL", url);
@@ -27,8 +27,8 @@ export class DataService {
   }
 
   searchNews(query: string) {
-    let url = "https://newsdata.io/api/1/news?apikey=pub_26343bd51473001e6f4a9f2a8a16d68b91285&country=us&q='";
-    url += query + "'";
+    let url = 'https://gnews.io/api/v4/search?q=example&apikey=e1f9e739bc96f6ffcbf7644e81416d39&q="';
+    url += query + '"';
 
     console.log("URL", url);
 

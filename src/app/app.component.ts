@@ -22,7 +22,8 @@ constructor(private authService: AuthService, private dataService: DataService) 
   userAuthenticated: boolean = false;
   loginToggle: boolean = false;
   favoritesToggle: boolean = false;
-  newsData: any;
+  // newsData: any;
+  newsStories: any;
   topStories: any;
   feedbackMsg: string = '';
   toggleBtn: string = 'login';
@@ -33,8 +34,9 @@ constructor(private authService: AuthService, private dataService: DataService) 
   feedbackText: string = '';
 
   ngOnInit() {
-    this.getData('en');
-    // this.topStories = newsData;
+    // this.getData('en');
+    this.topStories = newsData[0].articles;
+    console.log("newsData", newsData[0]);
     // console.log("top stories ->", this.topStories);
   }
 
@@ -176,8 +178,9 @@ constructor(private authService: AuthService, private dataService: DataService) 
 
   async getData(language: string) {
     try {
-      this.newsData = await this.dataService.getNews(language);
-      this.topStories = this.newsData.data.results;
+      this.newsStories = await this.dataService.getNews(language);
+      console.log("NEWS DATA", this.newsStories.data);
+      this.topStories = this.newsStories.data.results;
       console.log("TOP STORIES", this.topStories);
     } catch (error) {
       console.error("Error:", error);
@@ -186,11 +189,12 @@ constructor(private authService: AuthService, private dataService: DataService) 
 
   async searchNews() {
     try {
-      this.newsData = await this.dataService.searchNews(this.searchBar);
+      this.newsStories = await this.dataService.searchNews(this.searchBar);
+      console.log("SEARCH", this.newsStories);
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      this.topStories = this.newsData.data.results;
+      this.topStories = this.newsStories.data.results;
     }
   }
 }
