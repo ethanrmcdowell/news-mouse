@@ -22,7 +22,6 @@ constructor(private authService: AuthService, private dataService: DataService) 
   userAuthenticated: boolean = false;
   loginToggle: boolean = false;
   favoritesToggle: boolean = false;
-  // newsData: any;
   newsStories: any;
   topStories: any;
   feedbackMsg: string = '';
