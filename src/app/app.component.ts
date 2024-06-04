@@ -33,10 +33,10 @@ constructor(private authService: AuthService, private dataService: DataService) 
   feedbackText: string = '';
 
   ngOnInit() {
-    // this.getData('en');
-    this.topStories = newsData[0].articles;
-    console.log("newsData", newsData[0]);
-    // console.log("top stories ->", this.topStories);
+    this.getData('en');
+    // this.topStories = newsData[0].articles;
+    // console.log("newsData", newsData[0]);
+    console.log("top stories ->", this.topStories);
   }
 
   loginUser() {
