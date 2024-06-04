@@ -179,7 +179,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
     try {
       this.newsStories = await this.dataService.getNews(language);
       console.log("NEWS DATA", this.newsStories.data);
-      this.topStories = this.newsStories.data.results;
+      this.topStories = this.newsStories.data.articles;
       console.log("TOP STORIES", this.topStories);
     } catch (error) {
       console.error("Error:", error);
@@ -193,7 +193,7 @@ constructor(private authService: AuthService, private dataService: DataService) 
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      this.topStories = this.newsStories.data.results;
+      this.topStories = this.newsStories.data.articles;
     }
   }
 }
